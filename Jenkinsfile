@@ -10,11 +10,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying Docker container...'
-                // Stop and remove existing container if running
                 bat 'docker stop website || exit 0'
                 bat 'docker rm website || exit 0'
-                // Run new container
-                bat 'docker run -d -p 8080:80 --name website rajhub22/website:latest'
+                bat 'docker run -d -p 80:80 --name website rajhub22/website:latest'
             }
         }
     }
